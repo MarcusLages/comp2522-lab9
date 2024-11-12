@@ -1,15 +1,23 @@
 package ca.bcit.comp2522.lab9.bam;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class QuizApp {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class QuizApp extends Application {
+
+    @Override
+    public void start(final Stage stage) throws Exception {
+        final Scene scene;
+
+        // TODO: set scene in ANOTHER method/function
+//        stage.setScene(scene);
+        stage.setTitle("Quiz App game");
+        stage.show();
+    }
+
+    public static void main(final String[] args) {
+        Application.launch(args);
     }
 }
