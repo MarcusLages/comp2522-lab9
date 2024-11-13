@@ -1,15 +1,18 @@
-package ca.bcit.comp2522.lab9.bam;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+package ca.bcit.comp2522.lab9.bam;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.List;
+
 public class QuizApp extends Application {
 
     @Override
     public void start(final Stage stage) throws Exception {
         final Scene scene;
+        final List<Question> questions;
+        questions = Question.getQuestions();
 
         // TODO: set scene in ANOTHER method/function
 //        stage.setScene(scene);
