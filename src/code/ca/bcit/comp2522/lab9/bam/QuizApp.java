@@ -6,10 +6,21 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
+/**
+ * Class that serves as the entry point for a JavaFX application that displays
+ * a quiz game.
+ */
 public class QuizApp extends Application {
 
+    /**
+     * The main entry point for the JavaFX application. This method is called after
+     * the JavaFX application has been initialized.
+     *
+     * @param stage primary stage for this application that is going appear on
+     *              the screen
+     */
     @Override
-    public void start(final Stage stage) throws Exception {
+    public void start(final Stage stage) {
         final Scene scene;
         final List<Question> questions;
         questions = Question.getQuestions();
@@ -20,6 +31,11 @@ public class QuizApp extends Application {
         stage.show();
     }
 
+    /**
+     * The main method for launching the JavaFX application.
+     *
+     * @param args the command-line arguments
+     */
     public static void main(final String[] args) {
         Application.launch(args);
     }
