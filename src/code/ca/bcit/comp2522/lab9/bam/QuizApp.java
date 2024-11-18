@@ -34,37 +34,58 @@ public class QuizApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    private Scene createQuizScene(Stage stage) {
-        // Create the layout and scene
+    /**
+     * Creates and returns the quiz scene for the application.
+     *
+     * @param stage the primary stage of the application
+     * @return the constructed quiz scene
+     */
+    private Scene createQuizScene(final Stage stage) {
         final VBox root = new VBox();
         final Scene scene = new Scene(root, 600, 400);
+        final Label label;
+        final TextField textField;
+        final Button button;
+        final Button buttonSubmit;
+        final Label scoreLabel;
+        final String stylesheet;
 
-        // Add a stylesheet
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
+        // Add a stylesheet to the scene
+        stylesheet = Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm();
+        scene.getStylesheets().add(stylesheet);
+
+        // Style the root layout
         root.getStyleClass().add("vbox");
-        // Create UI components
-        Label label = new Label("Welcome to Da Quiz Faty!!!!");
+
+        // Create a label to display the welcome message
+        label = new Label("Welcome to Da Quiz Faty!!!!");
         label.getStyleClass().add("score-label");
 
-        TextField textField =  new TextField();
+        // Create a text field for user input
+        textField = new TextField();
 
-        Button button = new Button("Click me to begin!");
+        // Create the "Begin" button
+        button = new Button("Click me to begin!");
         button.getStyleClass().add("button");
 
-        Button buttonSubmit = new Button("Submit");
+        // Set the action for the "Begin" button
+        button.setOnAction(e -> label.setText("question go here"));
+
+        // Create the "Submit" button
+        buttonSubmit = new Button("Submit");
         buttonSubmit.getStyleClass().add("button");
 
-        button.setOnAction(e  -> label.setText("question go here"));
-        Label scoreLabel = new Label("Score: 0");
-
+        // Create a label to display the score
+        scoreLabel = new Label("Score: 0");
         scoreLabel.getStyleClass().add("score-label");
 
         // Add components to the layout
-        root.getChildren().addAll(label,textField, buttonSubmit, button,scoreLabel);
+        root.getChildren().addAll(label, textField, buttonSubmit, button, scoreLabel);
 
         // Return the scene
         return scene;
     }
+
 
 
     /**
