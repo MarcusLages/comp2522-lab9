@@ -52,8 +52,10 @@ public class QuizApp extends Application {
     public void start(final Stage stage) {
         try {
             questions = Question.getQuestions();
+
             if (questions.isEmpty()) {
                 throw new RuntimeException("No questions found in quiz.txt");
+
             }
         } catch (final Exception e) {
             showErrorAndExit("Error loading questions: " + e.getMessage());
@@ -78,6 +80,8 @@ public class QuizApp extends Application {
      * @return the constructed quiz scene
      */
     private Scene createQuizScene(final Stage stage) {
+        // Marcus: separate instantiation and inicialization.
+        // Magic numbers too
         final VBox root = new VBox(15);
         root.setAlignment(Pos.CENTER);
         final Scene scene = new Scene(root, 600, 400);
@@ -86,6 +90,7 @@ public class QuizApp extends Application {
         stylesheet = Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm();
         scene.getStylesheets().add(stylesheet);
 
+        // Marcus: be polite dumbass
         mainLabel = new Label("Welcome to Da Quiz Faty!!!!");
         mainLabel.getStyleClass().add("score-label");
         mainLabel.setWrapText(true);
@@ -123,6 +128,7 @@ public class QuizApp extends Application {
      * Starts the quiz by selecting 10 random questions and displaying the first question.
      */
     private void startQuiz() {
+        // Marcus: avoid repeating code, like in restartQuiz()
         Collections.shuffle(questions);
         if (questions.size() >= MAX_QUESTIONS) {
             quizQuestions = questions.subList(MIN_QUESTIONS, MAX_QUESTIONS);
@@ -151,6 +157,7 @@ public class QuizApp extends Application {
      * Displays the current question in the main label.
      */
     private void displayQuestion() {
+        // Marcus: lines are toooo long
         if (currentQuestionIndex < quizQuestions.size()) {
             Question currentQuestion = quizQuestions.get(currentQuestionIndex);
             mainLabel.setText("Question " + (currentQuestionIndex + QUESTION_INCREMENT) + ": " + currentQuestion.getQuestion());
@@ -229,6 +236,7 @@ public class QuizApp extends Application {
     private void restartQuiz() {
 
         Collections.shuffle(questions);
+
         if (questions.size() >= MAX_QUESTIONS) {
             quizQuestions = questions.subList(MIN_QUESTIONS, MAX_QUESTIONS);
         } else {
@@ -255,6 +263,7 @@ public class QuizApp extends Application {
      */
     private void showErrorAndExit(final String message) {
         System.err.println(message);
+        // Marcus: Magic number
         System.exit(1);
     }
 
